@@ -1,0 +1,27 @@
+<div class="card mb-4" style="max-width: 600px; margin: 10px auto;">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <% if customer.photo.attached? %>
+            <%= image_tag customer.photo, style: "width:64px; height:64px; object-fit:cover; border-radius:50%;" %>
+          <% else %>
+            <img src="https://bulma.io/images/placeholders/64x64.png" alt="No photo" style="border-radius:50%;">
+          <% end %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-5"><%= customer.full_name %></p>
+        <p class="subtitle is-6">
+          <%= customer.email_address.present? ? customer.email_address : "⚠️ No email on file" %>
+        </p>
+      </div>
+    </div>
+    <div class="content">
+      <p><strong>📞 Phone:</strong> <%= customer.phone_number.present? ? customer.phone_number : "N/A" %></p>
+      <% if customer.notes.present? %>
+        <p><strong>📝 Notes:</strong> <%= customer.notes %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
