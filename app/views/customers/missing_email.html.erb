@@ -1,0 +1,18 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">Customers Missing Email</h1>
+    <div class="buttons mb-4">
+      <%= link_to "🏠 All Customers", root_path, class: "button is-light" %>
+      <%= link_to "📋 Alphabetized", "/customers/alphabetized", class: "button is-info" %>
+    </div>
+    <% if @customers.empty? %>
+      <div class="notification is-success">
+        ✅ All customers have email addresses!
+      </div>
+    <% else %>
+      <% @customers.each do |customer| %>
+        <%= render partial: "customer", locals: { customer: customer } %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
